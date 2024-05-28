@@ -1,0 +1,57 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khatabook</title>
+  </head>
+  <body>
+    <nav>
+      <div
+        class="text-amber-300 p-4 font-bold font-mono flex items-center gap-2"
+      >
+        <div class="text-xl">Khatabook</div>
+        <button id="add_file">
+          <img
+            src="./assets/add_icon.svg"
+            alt="Add Icon"
+            class="w-5 h-5 ml-2"
+            onclick="window.location.href='/addFile'"
+          />
+        </button>
+      </div>
+    </nav>
+
+    <!-- Display Files -->
+    <div class="p-4">
+      <% files.forEach((file) => { %>
+      <div
+        class="h-fit w-[200px] border border-2 border-grey-400 text-blue-500 m-2 p-1 font-mono text-sm flex items-center justify-between"
+      >
+        <span class="text-zinc-700"><%= file.replace(/\.txt$/, '') %></span>
+        <div class="flex gap-2">
+          <button>
+            <img
+              src="./assets/edit_icon.svg"
+              alt="Edit Icon"
+              class="w-5 h-5"
+              onclick="window.location.href='/editFile/<%= file %>'"
+            />
+          </button>
+          <button>
+            <img
+              src="./assets/delete_icon.svg"
+              alt="Delete Icon"
+              class="w-5 h-5"
+              onclick="window.location.href='/'"
+            />
+          </button>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
